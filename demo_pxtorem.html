@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+        <meta name="viewport" id="viewport" content="width=device-width,initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+        <meta name="format-detection" content="telephone=no"/>
+        <title>GreatBoy</title>
+        <style>
+            /*-----css Reset end-----*/
+            body,h1,h2,h3,h4,h5,h6,p,ul,ol,form{
+                margin:0;
+                padding:0px;
+            }
+            html{
+/*                display: none;*/
+            }
+            body{
+                font-size: 14px;
+            }
+            .nav img{
+                width: 100%;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="nav"><img src="http://p1.jmstatic.com/banner/75/mobile_app/24326_0.jpg"/></div>
+        <div id="container">
+            <div id="user">用户信息<span id="userinfo"></span></div>
+        </div>
+        <script>
+        (function(win) {
+            var doc = win.document,
+                scale = 16,
+                $body = doc.getElementsByTagName('body')[0],
+                $html = doc.getElementsByTagName('html')[0],
+                windowWidth = doc.documentElement && doc.documentElement.clientWidth || doc.body && doc.body.clientWidth || win.innerWidth,
+                windowHeight = doc.documentElement && doc.documentElement.clientHeight || doc.body && doc.body.clientHeight || window.innerHeight,
+                deviceAgent = navigator.userAgent.toLowerCase();
+            if ( deviceAgent.match( /(iphone|ipod|ipad|android|windows\s*phone|symbianos)/ ) ) {
+                scale = parseFloat(windowWidth * 16 / (16*3.2));
+                if (deviceAgent.match(/android\s*2.3/) && deviceAgent.match(/micromessenger/)) {
+                    scale = 16;
+                }
+                $html.style.fontSize = scale + 'px';
+                $html.style.display = 'block';
+            } else {
+                window.onresize = function(){
+                    windowWidth = doc.documentElement && doc.documentElement.clientWidth || doc.body.clientWidth || win.innerWidth;
+                    scale = parseFloat(windowWidth * 16 / (16*3.2));
+                    $html.style.fontSize = scale + 'px';
+                };
+
+                scale = parseFloat(windowWidth * 16 / (16*3.2));
+                if(scale > 150){
+                    scale = 150;
+                }
+                $html.style.fontSize = scale + 'px';
+                $html.style.display = 'block';
+            }
+            $body.style.width = '3.2rem';
+            $body.style.margin = '0px auto';
+        })(window);
+ </script>
+    </body>
+</html>
